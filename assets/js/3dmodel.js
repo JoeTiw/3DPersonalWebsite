@@ -1,9 +1,9 @@
 const container = document.getElementById('threejsModel');      
 const mediaQuery500px = window.matchMedia('(max-width: 500px)');
 const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 0.1, 2000);
         const renderer = new THREE.WebGLRenderer();
-        const ambientLighting = new THREE.AmbientLight(0xFF7F7F, 1);
+        const ambientLighting = new THREE.AmbientLight(0xD3D3D3, 1.1);
 
         //renderer.setSize(800, 512);
         addEventListener("resize", (event) => {
@@ -25,7 +25,7 @@ const scene = new THREE.Scene();
         scene.add(ambientLighting);
         // Load the .glb file
         loader.load(
-            'assets/Threemodel/gaming.glb',
+            'assets/Threemodel/boeing.glb',
             function ( gltf ) {
             // Add the loaded object to the scene
             scene.add(gltf.scene);
@@ -50,9 +50,12 @@ const scene = new THREE.Scene();
         );
 
         // Set up the camera and renderer
-        camera.position.z = 10;
-        camera.position.y = 3;
-        camera.position.x = 3;
+        camera.position.z = -600;
+        camera.position.y = 550;
+        camera.position.x = 10;
+
+        
+
         
         //Black background
         scene.background = new THREE.Color('#f3f5fa');
@@ -70,4 +73,3 @@ const scene = new THREE.Scene();
             renderer.render(scene, camera);
         };
         animate();
-            
